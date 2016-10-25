@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MailFormValidation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 
 class MailController extends Controller
@@ -98,6 +100,18 @@ class MailController extends Controller
      */
     public function sendmail(MailFormValidation $request)
     {
+        if ($request->has('message') && ($request->has('email'))) {
 
+            $body = ['message' => $request->message];
+
+            Mail::send('mail.newmail', ['body' => $body], function ($message) use ($request) {
+                $message->to($request->email)->from('kaan94karaca@gmail.com',
+                    'h4yfans Mailer Service')->subject($request->subject);
+            });
+
+            Session::flash('flashmessage', 'Mail sent successfully');
+
+            return redirect('mail');
+        }
     }
 }

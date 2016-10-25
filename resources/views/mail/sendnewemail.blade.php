@@ -11,10 +11,25 @@
             <div class="row">
                 <div class="col-sm-12">
 
+                    @if(Session::has('flashmessage'))
+                        <div class="alert alert-success">
+                                <button class="close" type="button" data-dismiss="alert"
+                                        aria-hidden="true">       &times;
+                                </button>
+                                <strong>{{Session::get('flashmessage')}}</strong>  <br>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
                             @foreach($errors->all() as $error)
-                                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">       &times;
+                                <button class="close" type="button" data-dismiss="alert"
+                                        aria-hidden="true">       &times;
                                 </button>
                                 <strong>{{$error}}</strong>  <br>
                             @endforeach
