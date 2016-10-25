@@ -27,6 +27,7 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery.js"></script>
+<script src="ckeditor/ckeditor.js"></script>
 <!-- Bootstrap JavaScript -->
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </body>
